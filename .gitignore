@@ -1,6 +1,23 @@
-node_modules
+# Foundry compilation artifacts and cache
+cache/
+out/
+
+# Deployment and broadcast logs
+broadcast/
+
+# Environment variables (Crucial: never commit your private keys or RPC URLs)
 .env
-dist
-build
-coverage
-.cache
+.env.*
+
+# Node dependencies (If OpenZeppelin was installed via npm/yarn)
+node_modules/
+
+# Coverage and gas reports
+coverage/
+coverage.json
+gas-report.txt
+
+# Editor and OS files
+.DS_Store
+*.log
+.vscode/
