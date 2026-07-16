@@ -1,9 +1,14 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors";
+import analyzeRoute from "./routes/analyze.js";
 
 const app = Fastify();
 
 await app.register(cors);
+
+await app.register(analyzeRoute, {
+  prefix: "/api",
+});
 
 app.get("/", async () => {
   return {

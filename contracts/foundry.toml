@@ -4,4 +4,4 @@ out = "out"
 libs = ["lib"]
 
 [rpc_endpoints]
-monad_testnet = "YOUR_MONAD_RPC_URL"
+monad_testnet = "${MONAD_RPC_URL}"
