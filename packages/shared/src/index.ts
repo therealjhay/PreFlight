@@ -1,5 +1,7 @@
 import { AnalyzeRequestSchema, type ValidatedAnalyzeRequest } from "./validation.js";
 
+export { RISK_SCORES, RISK_THRESHOLDS, MONAD_TESTNET, MAX_UINT256 } from "./constants.js";
+
 export function validateAnalyzeRequest(data: unknown): ValidatedAnalyzeRequest {
   return AnalyzeRequestSchema.parse(data);
 }
