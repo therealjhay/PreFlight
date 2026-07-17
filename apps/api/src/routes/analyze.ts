@@ -3,6 +3,7 @@ import { validateAnalyzeRequest } from "@preflight/shared";
 import { decodeTransaction } from "../services/decoder.js";
 import { calculateRisk } from "../services/riskEngine.js";
 import { queryReputation } from "../services/reputation.js";
+import { simulateTransaction } from "../services/simulation.js";
 
 export default async function analyzeRoute(app: FastifyInstance) {
   app.post(
@@ -13,7 +14,16 @@ export default async function analyzeRoute(app: FastifyInstance) {
 
         const decoded = decodeTransaction(validated.data);
 
-        const reputation = await queryReputation(validated.to);
+        const [reputation, simulation] = await Promise.all([
+          queryReputation(validated.to),
+          simulateTransaction(
+            validated.chainId,
+            validated.from,
+            validated.to,
+            validated.value,
+            validated.data
+          ),
+        ]);
 
         const risk = calculateRisk(decoded, reputation);
 
@@ -33,13 +43,7 @@ export default async function analyzeRoute(app: FastifyInstance) {
             data: validated.data,
           },
           decoded,
-          simulation: {
-            success: true,
-            assetsSent: [],
-            assetsReceived: [],
-            approvals: [],
-            warnings: [],
-          },
+          simulation,
           reputation,
           risk,
           recommendation,
