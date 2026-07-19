@@ -62,7 +62,7 @@ function App() {
         <div className="lg:col-span-2">
           <TransactionForm onSubmit={handleAnalyze} loading={loading} />
         </div>
-        <div className="lg:col-span-3" ref={resultRef}>
+        <div className="lg:col-span-3" ref={resultRef} aria-live="polite">
           {renderRightPanel()}
         </div>
       </div>
