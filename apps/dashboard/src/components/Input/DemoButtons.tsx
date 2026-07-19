@@ -4,7 +4,7 @@ interface DemoButtonsProps {
 
 export function DemoButtons({ onSelect }: DemoButtonsProps) {
   return (
-    <div className="flex gap-1.5" role="group" aria-label="Demo transactions">
+    <div className="flex flex-wrap gap-1.5" role="group" aria-label="Demo transactions">
       <button
         onClick={() => onSelect("transfer")}
         className="text-[11px] px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400/70 hover:text-emerald-300 hover:bg-emerald-500/20 transition-colors font-mono"

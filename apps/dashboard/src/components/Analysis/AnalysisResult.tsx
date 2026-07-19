@@ -36,7 +36,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
         simulation={result.simulation}
       />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <ReputationCard reputation={result.reputation} />
         <SimulationResultCard simulation={result.simulation} />
       </div>

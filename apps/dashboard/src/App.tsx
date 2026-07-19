@@ -53,7 +53,7 @@ function App() {
 
   return (
     <PageShell>
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6 items-start">
         <div className="lg:col-span-2">
           <TransactionForm onSubmit={handleAnalyze} loading={loading} />
         </div>

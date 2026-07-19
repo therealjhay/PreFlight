@@ -11,7 +11,7 @@ export function TransactionSummary({
   simulation,
 }: TransactionSummaryProps) {
   return (
-    <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <Card className="p-5">
         <div className="text-[11px] text-white/40 tracking-wider font-medium mb-3">
           ACTION
@@ -94,7 +94,7 @@ export function TransactionSummary({
           <div className="text-[11px] text-white/40 tracking-wider font-medium mb-3">
             ASSETS
           </div>
-          <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {simulation.assetsSent.length > 0 && (
               <div>
                 <div className="text-xs text-red-400/60 mb-1">SENDING</div>
