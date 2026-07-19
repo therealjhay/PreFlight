@@ -16,7 +16,7 @@ const glowStyles = {
 export function Card({ children, className = "", glow = "none" }: CardProps) {
   return (
     <div
-      className={`rounded-2xl border border-white/[0.06] bg-white/[0.03] ${glowStyles[glow]} ${className}`}
+      className={`rounded-2xl border border-white/[0.06] bg-white/[0.03] transition-all duration-200 hover:border-white/[0.12] ${glowStyles[glow]} ${className}`}
     >
       {children}
     </div>

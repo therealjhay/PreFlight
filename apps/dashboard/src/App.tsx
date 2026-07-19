@@ -15,6 +15,7 @@ function App() {
   const [result, setResult] = useState<AnalysisResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [stateKey, setStateKey] = useState(0);
   const resultRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
     setLoading(true);
     setError(null);
     setResult(null);
+    setStateKey((k) => k + 1);
 
     try {
       const response = await preflight.check({
@@ -45,9 +47,12 @@ function App() {
   };
 
   const renderRightPanel = () => {
-    if (loading) return <LoadingState />;
     if (error) return <ErrorState message={error} />;
-    if (result) return <AnalysisResult result={result} />;
+
+    if (loading) return <LoadingState key={stateKey} />;
+
+    if (result) return <AnalysisResult key={stateKey} result={result} />;
+
     return <EmptyState />;
   };
 

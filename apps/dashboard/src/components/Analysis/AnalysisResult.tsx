@@ -20,33 +20,43 @@ const glowMap = {
 
 export function AnalysisResult({ result }: AnalysisResultProps) {
   return (
-    <div className="space-y-4 animate-[slideUp_0.3s_ease-out]">
-      <Card className="p-6" glow={glowMap[result.risk.level]}>
-        <div className="flex items-start justify-between mb-6">
-          <RiskScore score={result.risk.score} level={result.risk.level} />
-          <RiskBadge level={result.risk.level} />
-        </div>
-        <p className="text-sm text-white/70">
-          {result.risk.recommendation}
-        </p>
-      </Card>
+    <div className="space-y-4">
+      <div className="animate-[slideUp_0.3s_ease-out]">
+        <Card className="p-6" glow={glowMap[result.risk.level]}>
+          <div className="flex items-start justify-between mb-6">
+            <RiskScore score={result.risk.score} level={result.risk.level} />
+            <RiskBadge level={result.risk.level} />
+          </div>
+          <p className="text-sm text-white/70">
+            {result.risk.recommendation}
+          </p>
+        </Card>
+      </div>
 
-      <TransactionSummary
-        decoded={result.decoded}
-        simulation={result.simulation}
-      />
+      <div className="animate-[slideUp_0.3s_ease-out_0.1s_both]">
+        <TransactionSummary
+          decoded={result.decoded}
+          simulation={result.simulation}
+        />
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div
+        className="animate-[slideUp_0.3s_ease-out_0.2s_both] grid grid-cols-1 sm:grid-cols-2 gap-4"
+      >
         <ReputationCard reputation={result.reputation} />
         <SimulationResultCard simulation={result.simulation} />
       </div>
 
-      <WarningList reasons={result.risk.reasons} />
+      <div className="animate-[slideUp_0.3s_ease-out_0.3s_both]">
+        <WarningList reasons={result.risk.reasons} />
+      </div>
 
-      <RecommendationCard
-        level={result.risk.level}
-        recommendation={result.risk.recommendation}
-      />
+      <div className="animate-[slideUp_0.3s_ease-out_0.4s_both]">
+        <RecommendationCard
+          level={result.risk.level}
+          recommendation={result.risk.recommendation}
+        />
+      </div>
     </div>
   );
 }
